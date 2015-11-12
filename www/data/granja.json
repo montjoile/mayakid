@@ -1,0 +1,25 @@
+[
+    {
+        "id": 0,
+        "name": "Vaca",
+        "kname": "Wakax",
+        "img": "img/granja/vaca.png",
+        "audio": "sounds/granja/vaca.mp3"
+    },
+    {
+        "id": 1,
+        "name": "Caballo", 
+        "kname": "Kej",
+        "img": "img/granja/caballo.png",
+        "audio": "sounds/granja/caballo.mp3"
+    },
+    {
+        "id": 2,
+        "name": "Gallo", 
+        "kname": "Mama´",
+        "img": "img/granja/gallo.png",
+        "audio": "sounds/granja/gallo.mp3"
+    }
+]
+
+

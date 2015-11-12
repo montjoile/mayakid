@@ -1,0 +1,98 @@
+<!--esconde el menu     <ion-view hide-nav-bar="true">-->
+
+
+
+<ion-view view-title="Granja">
+  <ion-content ng-controller="SlideBoxController">
+    <!--<ion-list>
+      <ion-item ng-repeat="animal in animals" href="#/app/playlists/{{playlist.id}}">
+      	<div>
+      		<img ng-src="{{animal.img}}" />
+      	</div>
+        {{animal.name}}
+		<button ng-click='animal.audio.play()' volume="0.5" start="0.2">Click me</button>
+      </ion-item>
+    </ion-list>-->
+
+
+
+<!--<ion-slide-box>
+    <ion-slide ng-repeat="animal in animals">
+        <div class="item item-thumbnail-left">
+             <h4 class=" pull-right">{{animal.name}}</h4>
+
+            <p class="pull-right" ng-bind-html="animal.kname"></p>
+        </div>
+    </ion-slide>
+</ion-slide-box>-->
+
+
+<div class="row ">
+  <!--boton izquierdo-->
+  <div class="col-10 col-center">
+    <img ng-src="img/icons/play_back.png" ng-click="previousSlide()" class="img-center"/>
+  </div>
+
+  <!--slide-->
+  <div class="col-80 ">
+    <ion-slide-box show-pager="false" auto-play="false" does-continue="true" ng-init="disableSwipe()">
+        <ion-slide ng-repeat="animal in animals | orderBy:random">
+
+          <!--name-->
+          <div class="col">
+              <h1>{{animal.name}}</h1>       
+          </div>
+         
+          <!--kname-->
+          <div class="col">
+              <h3>{{animal.kname}}</h3>  
+          </div>
+         
+          <!--animal image-->
+          <div>
+            <img ng-src="{{animal.img}}" ng-click=" animal.audio.play()" class="animated infinite swing img-center"/>
+          </div>
+
+        </ion-slide>
+    </ion-slide-box>
+  </div>
+
+  <!--boton derecho-->
+  <div class="col-10 col-center">
+    <img ng-src="img/icons/play.png" ng-click="nextSlide()" class="img-center" />
+  </div>  
+
+</div>
+
+
+
+
+
+
+<!--
+  <img ng-src="img/icons/play_back.png" ng-click="previousSlide()" />
+
+
+<ion-slide-box  show-pager="false" auto-play="false" does-continue="true" ng-init="disableSwipe()">
+        <ion-slide ng-repeat="animal in animals | orderBy:random">
+        
+
+          <h4>{{animal.name}}</h4>       
+          <p>{{animal.kname}}</p>  
+          <div>
+      		<img ng-src="{{animal.img}}" ng-click=" animal.audio.play()" class="animated infinite swing" />
+      	</div>
+
+        </ion-slide>
+      </ion-slide-box>
+
+ 
+
+
+  <img ng-src="img/icons/play.png" ng-click="nextSlide()" />
+-->
+
+  </ion-content>
+</ion-view>
+
+
