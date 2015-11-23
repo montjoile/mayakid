@@ -2,13 +2,80 @@ angular.module('starter.controllers', ['ngAudio'])
 
 
 
+.controller('AudioCtrl', function($scope,  $cordovaNativeAudio) {
+  $scope.isSoundLoaded = false;
+  $scope.audio = null;
+  $scope.media = null;
 
+
+  function playNativeSound(name){
+    $cordovaNativeAudio.play(name);
+  }
+
+  function loadSound(name, audio){
+    $cordovaNativeAudio
+            .preloadSimple(name, audio)
+            .then(function (msg) {
+            }, function (error) {
+              alert(error); 
+            });
+      $scope.isSoundLoaded = true;
+      playNativeSound(name);
+  }
+
+  $scope.playNative = function(name, audio){
+    if($scope.isSoundLoaded){
+      playNativeSound(name);
+    }
+    else{
+      loadSound(name, audio);
+    }
+  }
+
+  $scope.playNativeLoop = function (){
+    if($scope.isSoundLoaded){
+      $cordovaNativeAudio.loop('mySound');
+    }
+    else{
+      loadSound();
+    }
+  }
+
+  $scope.stopNative = function(){
+      $cordovaNativeAudio.stop('mySound');
+  }
+
+  $scope.playWebAudio = function()
+  {
+    try{
+      $scope.audio = new Audio('http://codedreaming.com/wp-content/uploads/main_tune.mp3');
+      $scope.audio.play();
+    }
+    catch(e){
+      alert(e);
+    }
+  }
+
+  $scope.playWebAudioLoop = function()
+  {
+    $scope.audio = new Audio('http://codedreaming.com/wp-content/uploads/main_tune.mp3');
+    $scope.audio.loop = true;
+    $scope.audio.play();
+  }
+
+  $scope.stopWeb = function(){
+    $scope.audio.pause();
+  }
+
+
+})
 
      
 
 //musica de ambiente:
  .controller('SoundController',function($scope, ngAudio, $cordovaNativeAudio, $ionicPlatform){
     //$scope.audio = ngAudio.play('sounds/ambient/ambient.mp3');
+              
 
 
   /*  $ionicPlatform.ready(function() {
@@ -55,9 +122,9 @@ angular.module('starter.controllers', ['ngAudio'])
       $scope.animals = data;
       data = shuffleArray(data);
       //envia el src del audio a ngAudio:
-      for (var i = 0; i < $scope.animals.length; i++) {
+      /*for (var i = 0; i < $scope.animals.length; i++) {
         $scope.animals[i].audio = ngAudio.load($scope.animals[i].audio);
-      };
+      };*/
     });
 
     setTimeout(function() {
@@ -76,7 +143,7 @@ angular.module('starter.controllers', ['ngAudio'])
 
 
 
-//Fisher-Yates Shuffle algorithm
+//Fisher-Yates Shuffle algorithm for animals in slidebox
 function shuffleArray(array) {
     var counter = array.length, temp, index;
 

@@ -3,7 +3,7 @@
 
 
 <ion-view view-title="Granja">
-  <ion-content ng-controller="SlideBoxController">
+  <ion-content ng-controller="SlideBoxController" scroll="false" padding="true" style=" height: 100%;">
     <!--<ion-list>
       <ion-item ng-repeat="animal in animals" href="#/app/playlists/{{playlist.id}}">
       	<div>
@@ -26,44 +26,43 @@
     </ion-slide>
 </ion-slide-box>-->
 
-
-<div class="row ">
+<div class="row" style="background-color:yellow; height: 100%;"  ng-controller="AudioCtrl">
   <!--boton izquierdo-->
-  <div class="col-10 col-center">
+  <div class="col-10 col-center" style="background-color:blue">
     <img ng-src="img/icons/play_back.png" ng-click="previousSlide()" class="img-center"/>
   </div>
 
   <!--slide-->
-  <div class="col-80 ">
+  <div class="col-80" style="background-color:red">
     <ion-slide-box show-pager="false" auto-play="false" does-continue="true" ng-init="disableSwipe()">
-        <ion-slide ng-repeat="animal in animals | orderBy:random">
+      <ion-slide ng-repeat="animal in animals | orderBy:random">
+        <!--name-->
+        <div class="row row-top" style="background-color:green">
+          <h1 class="name animated infinite pulse slower ">{{animal.name}}</h1>
+        </div>
+        <!--kname-->
+        <div class="row row-top" style="background-color:purple">
+          <h3 class="kname">{{animal.kname}}</h3>  
+        </div>
+        <!--animal image-->
+        <div class="row row-top" style="background-color:gray">
+          <div class="row row-top">
+            <img ng-src="{{animal.img}}" ng-click="playNative('{{animal.name}}','{{animal.audio}}')" class="img-animal animated infinite tada slower img-center"/>
+          </div>
+        </div>
+        <!--footer-->
+        <div class="row row-bottom padding-bottom" style="background-color:pink"></div>
 
-          <!--name-->
-          <div class="col">
-              <h1>{{animal.name}}</h1>       
-          </div>
-         
-          <!--kname-->
-          <div class="col">
-              <h3>{{animal.kname}}</h3>  
-          </div>
-         
-          <!--animal image-->
-          <div>
-            <img ng-src="{{animal.img}}" ng-click=" animal.audio.play()" class="animated infinite swing img-center"/>
-          </div>
-
-        </ion-slide>
-    </ion-slide-box>
+      </ion-slide>
+    </ion-slide-box>    
   </div>
 
   <!--boton derecho-->
-  <div class="col-10 col-center">
-    <img ng-src="img/icons/play.png" ng-click="nextSlide()" class="img-center" />
-  </div>  
+  <div class="col-10 col-center" style="background-color:blue">
+    <img ng-src="img/icons/play.png" ng-click="nextSlide()" class="img-center" /> 
+  </div>
 
 </div>
-
 
 
 

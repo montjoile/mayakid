@@ -29,11 +29,19 @@
         <img src="img/ionic.png"/>
       </a>-->
 
-<ion-content ng-controller="SoundController as vm">
-        <p><button ng-click="vm.play('bass')" class="button icon-left ion-play button-assertive">Play Bass</button></p>
-        <p><button ng-click="vm.play('hi-hat')" class="button icon-left ion-play button-balanced">Play Hi-Hat</button></p>
-        <p><button ng-click="vm.play('snare')" class="button icon-left ion-play button-energized">Play Snare</button></p>
-        <p><button ng-click="vm.play('bongo')" class="button icon-left ion-play button-positive">Play Bongo</button></p>
+<ion-content ng-controller="AudioCtrl">
+        <button class="button button_green" ng-click="playNative('ambient', 'sounds/ambient/ambient.mp3')" >native</button>
+        <button class="button button_blue" ng-click="playMedia()" >media</button>
+        <button class="button button_yellow" ng-click="playWebAudio()" >web</button>
+        <hr>
+        <button class="button button_green" ng-click="playNativeLoop()" >native loop</button>
+        <button class="button button_yellow" ng-click="playWebAudioLoop()" >web loop</button>
+        <hr>
+        <button class="button button_green" ng-click="stopNative()" >native stop</button>
+        <button class="button button_blue" ng-click="stopMedia()" >media stop</button>
+        <button class="button button_yellow" ng-click="stopWeb()" >web stop</button>
+
+
       </ion-content>
 
 
